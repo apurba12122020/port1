@@ -1,32 +1,225 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+  padding-top: 80px;
+}
+
 :root {
   --primary: #004d40;
-  --accent: #009688;
-  --bg: #f9f9f9;
-  --text: #333;
-  --white: #fff;
+  --accent: #00bfa5;
+  --bg: #fdfdfd;
+  --text: #222;
+  --card: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
 }
 
 body.dark-mode {
   --bg: #121212;
   --text: #e0e0e0;
-  --white: #1e1e1e;
+  --card: #1e1e1e;
+  --shadow: rgba(255, 255, 255, 0.05);
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  transition: background 0.3s, color 0.3s;
+/* Header */
+header {
+  background: var(--primary);
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
-.fade-in {
-  animation: fadeIn 1s ease-in;
+.header-content {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
+.header-content .text {
+  flex: 1;
+}
+
+.header-content .photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  object-fit: cover;
+}
+
+/* Navigation */
+nav {
+  background: var(--accent);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 10px 0;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a, #toggle-theme {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+nav a:hover, #toggle-theme:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Main Content */
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+section {
+  margin-bottom: 60px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* Project Cards */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow);
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.project-card .tools img {
+  width: 28px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.project-links a {
+  display: inline-block;
+  margin-right: 12px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+/* Certificates */
+.cert-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cert-gallery img {
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.cert-gallery img:hover {
+  transform: scale(1.03);
+}
+
+/* Footer */
+footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Header, nav, sections, footer styles remain similar to previous version with updated colors */
+/* Responsive */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-content .photo {
+    margin-top: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav li {
+    margin: 5px 0;
+  }
+}
