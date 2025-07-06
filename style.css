@@ -1,23 +1,3 @@
-/* Reset & Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  transition: background 0.3s, color 0.3s;
-  padding-top: 80px;
-}
-
 :root {
   --primary: #004d40;
   --accent: #00bfa5;
@@ -34,13 +14,22 @@ body.dark-mode {
   --shadow: rgba(255, 255, 255, 0.05);
 }
 
-/* Header */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+  scroll-behavior: smooth;
+}
+
 header {
-  background: var(--primary);
-  color: white;
   position: fixed;
   top: 0;
   width: 100%;
+  background: var(--primary);
+  color: white;
   z-index: 1000;
   box-shadow: 0 2px 8px var(--shadow);
 }
@@ -55,19 +44,14 @@ header {
   flex-wrap: wrap;
 }
 
-.header-content .text {
-  flex: 1;
-}
-
 .header-content .photo img {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 3px solid var(--accent);
   object-fit: cover;
 }
 
-/* Navigation */
 nav {
   background: var(--accent);
 }
@@ -75,9 +59,10 @@ nav {
 nav ul {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   list-style: none;
+  margin: 0;
   padding: 10px 0;
+  flex-wrap: wrap;
 }
 
 nav li {
@@ -98,16 +83,15 @@ nav a:hover, #toggle-theme:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* Main Content */
 main {
   max-width: 1100px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 120px 20px 40px;
 }
 
 section {
   margin-bottom: 60px;
-  animation: fadeIn 0.8s ease-in;
+  animation: fadeInUp 0.8s ease-in;
 }
 
 h2 {
@@ -123,7 +107,6 @@ ul {
   padding-left: 20px;
 }
 
-/* Project Cards */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -135,11 +118,12 @@ ul {
   border-radius: 10px;
   box-shadow: 0 4px 12px var(--shadow);
   padding: 20px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 16px var(--shadow);
 }
 
 .project-card img {
@@ -171,7 +155,6 @@ ul {
   text-decoration: underline;
 }
 
-/* Certificates */
 .cert-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -189,7 +172,6 @@ ul {
   transform: scale(1.03);
 }
 
-/* Footer */
 footer {
   background: var(--primary);
   color: white;
@@ -199,13 +181,22 @@ footer {
 }
 
 /* Animations */
-@keyframes fadeIn {
+@keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* Responsive Navigation */
 @media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    margin: 8px 0;
+  }
+
   .header-content {
     flex-direction: column;
     text-align: center;
@@ -213,13 +204,5 @@ footer {
 
   .header-content .photo {
     margin-top: 20px;
-  }
-
-  nav ul {
-    flex-direction: column;
-  }
-
-  nav li {
-    margin: 5px 0;
   }
 }
