@@ -1,4 +1,4 @@
-// Smooth scroll for nav links
+// Smooth scroll
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', function(e) {
     if (this.getAttribute('href').startsWith('#')) {
@@ -17,3 +17,4 @@ toggleBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
   toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌓';
 });
+
